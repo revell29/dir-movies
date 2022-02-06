@@ -1,14 +1,25 @@
-import { Button, Flex, Heading, Input, useToken } from '@chakra-ui/react';
+/* eslint-disable react/no-children-prop */
+import {
+  Button,
+  Flex,
+  Heading,
+  useDisclosure,
+  useToken,
+} from '@chakra-ui/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
+import { Search } from 'react-feather';
 
 import { routes } from '@/routes';
+
+import { SearchMovie } from './modal/SearchMovie';
 
 const routeArray = Object.entries(routes as Record<string, string>);
 
 export const Navbar: React.FC = () => {
   const router = useRouter();
+  const { isOpen, onClose, onOpen } = useDisclosure();
 
   const isRoute = React.useCallback(
     (route: string) => {
@@ -45,9 +56,11 @@ export const Navbar: React.FC = () => {
       top={0}
       zIndex='modal'
     >
-      <Heading as='h2' fontSize='25px' mr={8}>
-        DirMovies
-      </Heading>
+      <Link href='/' passHref>
+        <Heading as='a' fontSize='25px' mr={8}>
+          DirMovies
+        </Heading>
+      </Link>
       {routeArray.map(([route, name]) => (
         <Link key={name} href={route} passHref>
           <Button
@@ -60,16 +73,18 @@ export const Navbar: React.FC = () => {
           </Button>
         </Link>
       ))}
-      <Flex ml='auto'>
-        <Input
-          placeholder='Search'
-          bg='whiteAlpha.50'
-          _focus={{
-            border: 0,
-            boxShadow: 'none',
-          }}
-        />
+      <Flex ml='auto' w='20%'>
+        <Button
+          w='full'
+          leftIcon={<Search />}
+          justifyContent='start'
+          color='gray.500'
+          onClick={onOpen}
+        >
+          Cari film
+        </Button>
       </Flex>
+      <SearchMovie isOpen={isOpen} onClose={onClose} />
     </Flex>
   );
 };

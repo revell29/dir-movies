@@ -1,4 +1,4 @@
-import { Box, LinkBox, Text } from '@chakra-ui/react';
+import { LinkBox, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import * as React from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
@@ -44,10 +44,9 @@ const SectionSlider: React.FC<SliderProps> = ({
             <LinkBox
               pos='relative'
               w='full'
-              bgColor='blackAlpha.400'
               _hover={{
                 cursor: 'pointer',
-                color: 'pink',
+                color: 'pink.400',
               }}
               overflow='hidden'
               role='group'
@@ -73,11 +72,9 @@ const SectionSlider: React.FC<SliderProps> = ({
                 height={IMAGE_CARD_SIZE[coverType || 1].height}
                 src={item.image}
               />
-              <Box px={2} pb={2}>
-                <Text overflow='hidden' fontSize='sm' isTruncated>
-                  {item.title}
-                </Text>
-              </Box>
+              <Text overflow='hidden' fontSize='sm' isTruncated>
+                {item.title}
+              </Text>
             </LinkBox>
           </Link>
         </SwiperSlide>

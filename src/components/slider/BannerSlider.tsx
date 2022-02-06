@@ -34,9 +34,9 @@ const BannerSlider: React.FC<SliderProps> = ({ images }: SliderProps) => {
       {images.map((item) => (
         <SwiperSlide key={item.image}>
           <Link href={item.link} passHref>
-            <Box pos='relative' w='full' pb='42%'>
+            <Box pos='relative' w='full' h='auto' pb='40%'>
               <LazyLoadImage
-                src={resizeImage(item.image, '1000')}
+                src={resizeImage(item.image, '2000')}
                 alt=''
                 effect='opacity'
                 style={{

@@ -17,6 +17,7 @@ module.exports = {
     'no-console': 'warn',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    'react-hooks/exhaustive-deps': 'off',
 
     'react/display-name': 'off',
     'react/jsx-curly-brace-presence': [

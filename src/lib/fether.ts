@@ -1,4 +1,3 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios from 'axios';
 
-export const fetcher = async (url: string, params?: AxiosRequestConfig) =>
-  axios.get(url, params).then((res) => res);
+export const fetcher = (url: string) => axios.get(url).then((res) => res.data);

@@ -18,7 +18,7 @@ const Home: NextPage = () => {
       const res = await fetcher(
         `/api/home?page=${Number(key.split('-').slice(-1)[0])}`
       );
-      return res.data;
+      return res;
     },
     { revalidateFirstPage: false }
   );
@@ -36,9 +36,8 @@ const Home: NextPage = () => {
             .reduce((acc, current) => [...acc, ...current], [])
             .map((section, index) =>
               section.homeSectionType === 'BANNER' ? (
-                <Box mt={9}>
+                <Box mt={9} key={index}>
                   <BannerSlider
-                    key={index}
                     images={
                       section.recommendContentVOList.map((item) => {
                         const searchParams = new URLSearchParams(
@@ -57,12 +56,11 @@ const Home: NextPage = () => {
                   />
                 </Box>
               ) : (
-                <Box mt={9}>
+                <Box mt={9} key={index}>
                   <Heading fontSize='2xl' mb={5}>
                     {section.homeSectionName.replace('on Loklok', '')}
                   </Heading>
                   <SectionSlider
-                    key={index}
                     images={section.recommendContentVOList.map((item) => {
                       const searchParams = new URLSearchParams(
                         new URL(item.jumpAddress).search

@@ -1,4 +1,4 @@
-import { EASINGS, Flex } from '@chakra-ui/react';
+import { Container, EASINGS, Flex } from '@chakra-ui/react';
 import { AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -33,9 +33,10 @@ const MainLayout: React.FC = (props) => {
             flexGrow={1}
             initial='initial'
             variants={PAGE_TRANSITION_VARIANTS}
-            px={[4, 16]}
           >
-            {children}
+            <Container maxW='container.xl' py={5} px={5}>
+              {children}
+            </Container>
           </MotionBox>
         </AnimatePresence>
       </Flex>
